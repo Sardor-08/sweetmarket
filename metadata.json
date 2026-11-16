@@ -1,0 +1,6 @@
+{
+  "name": "SweetMarket",
+  "description": "Artisanal confectionery marketplace and social commerce platform serving Samarkand, Uzbekistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

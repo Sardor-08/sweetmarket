@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* 60% Dominant Neutral Canvas (Warm Alabaster with ambient depth for clear mirror-glass refraction) */
+  --sm-bg-canvas: #f5f2eb;
+  --sm-bg-surface: rgba(255, 255, 255, 0.88);
+  --sm-bg-subtle: rgba(255, 255, 255, 0.72);
+  --sm-bg-elevated: rgba(255, 255, 255, 0.95);
+
+  /* 30% Structural Specular Clear Glass Borders & Mirror Rim Highlights */
+  --sm-border-subtle: rgba(255, 255, 255, 0.85);
+  --sm-border-strong: rgba(255, 255, 255, 0.98);
+  --sm-lens-highlight: inset 0 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(255, 255, 255, 0.6), inset 1px 0 0 rgba(255, 255, 255, 0.75), inset 0 0 24px rgba(255, 255, 255, 0.35);
+  --sm-lens-shadow: 0 16px 36px -12px rgba(42, 28, 20, 0.14), 0 2px 6px -2px rgba(42, 28, 20, 0.05);
+  --sm-lens-sheen: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.15) 40%, rgba(255, 255, 255, 0.0) 65%, rgba(255, 255, 255, 0.3) 100%);
+
+  /* Typography Ink Hierarchy */
+  --sm-text-primary: #171412;
+  --sm-text-secondary: #433c38;
+  --sm-text-muted: #69605b;
+  --sm-text-inverse: #faf9f7;
+
+  /* 10% Brand Accent Budget (Samarkand Terracotta & Antiqued Gold) */
+  --sm-accent-primary: #8c3b2b;
+  --sm-accent-primary-hover: #722e21;
+  --sm-accent-primary-soft: rgba(140, 59, 43, 0.12);
+  --sm-accent-gold: #8e6c2e;
+
+  /* Semantic Status Colors */
+  --sm-status-success: #1f6e4a;
+  --sm-status-success-bg: rgba(31, 110, 74, 0.12);
+  --sm-status-warning: #92580a;
+  --sm-status-warning-bg: rgba(146, 88, 10, 0.12);
+  --sm-status-danger: #b42318;
+  --sm-status-danger-bg: rgba(180, 35, 24, 0.12);
+  --sm-status-info: #1d4ed8;
+  --sm-status-info-bg: rgba(29, 78, 216, 0.12);
+
+  /* Focus Ring */
+  --sm-focus-ring: #8c3b2b;
+
+  /* Fonts */
+  --sm-font-display: "Playfair Display", Georgia, serif;
+  --sm-font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --sm-font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.dark {
+  /* 60% Dominant Dark Canvas (Deep Cacao Obsidian) */
+  --sm-bg-canvas: #0a0807;
+  --sm-bg-surface: rgba(26, 22, 20, 0.90);
+  --sm-bg-subtle: rgba(35, 30, 27, 0.78);
+  --sm-bg-elevated: rgba(18, 15, 14, 0.96);
+
+  /* 30% Structural Specular Dark Mirror-Glass Borders & Rim Highlights */
+  --sm-border-subtle: rgba(255, 255, 255, 0.28);
+  --sm-border-strong: rgba(255, 255, 255, 0.52);
+  --sm-lens-highlight: inset 0 1.5px 0 rgba(255, 255, 255, 0.42), inset 0 -1px 0 rgba(255, 255, 255, 0.12), inset 1px 0 0 rgba(255, 255, 255, 0.24), inset 0 0 22px rgba(255, 255, 255, 0.08);
+  --sm-lens-shadow: 0 20px 44px -12px rgba(0, 0, 0, 0.78);
+  --sm-lens-sheen: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 42%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.12) 100%);
+
+  /* Typography Ink Hierarchy */
+  --sm-text-primary: #f8f6f2;
+  --sm-text-secondary: #d6cfc8;
+  --sm-text-muted: #a69c94;
+  --sm-text-inverse: #171412;
+
+  /* 10% Brand Accent Budget (Luminous Terracotta Rose & Warm Gold) */
+  --sm-accent-primary: #d47862;
+  --sm-accent-primary-hover: #e08c78;
+  --sm-accent-primary-soft: rgba(212, 120, 98, 0.18);
+  --sm-accent-gold: #c9a45c;
+
+  /* Semantic Status Colors */
+  --sm-status-success: #4ade80;
+  --sm-status-success-bg: rgba(74, 222, 128, 0.14);
+  --sm-status-warning: #facc15;
+  --sm-status-warning-bg: rgba(250, 204, 21, 0.14);
+  --sm-status-danger: #f87171;
+  --sm-status-danger-bg: rgba(248, 113, 113, 0.14);
+  --sm-status-info: #60a5fa;
+  --sm-status-info-bg: rgba(96, 165, 250, 0.14);
+
+  --sm-focus-ring: #d47862;
+}
+
+@layer base {
+  html {
+    font-family: var(--sm-font-sans);
+    background-color: var(--sm-bg-canvas);
+    color: var(--sm-text-primary);
+    overscroll-behavior-y: contain;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    overscroll-behavior-y: contain;
+    background-color: var(--sm-bg-canvas);
+    background-image:
+      radial-gradient(64rem 46rem at 8% -4%, rgba(164, 72, 52, 0.16), transparent 56%),
+      radial-gradient(56rem 40rem at 92% 14%, rgba(176, 134, 62, 0.15), transparent 58%),
+      radial-gradient(60rem 44rem at 24% 58%, rgba(196, 132, 98, 0.13), transparent 60%),
+      radial-gradient(58rem 44rem at 82% 88%, rgba(140, 59, 43, 0.12), transparent 62%);
+    background-attachment: fixed;
+    color: var(--sm-text-primary);
+    line-height: 1.6;
+  }
+
+  .dark body {
+    letter-spacing: 0.005em;
+    background-image:
+      radial-gradient(64rem 46rem at 8% -4%, rgba(212, 120, 98, 0.18), transparent 56%),
+      radial-gradient(56rem 40rem at 92% 14%, rgba(201, 164, 92, 0.14), transparent 58%),
+      radial-gradient(60rem 44rem at 24% 58%, rgba(140, 59, 43, 0.15), transparent 60%),
+      radial-gradient(58rem 44rem at 82% 88%, rgba(212, 120, 98, 0.11), transparent 62%);
+  }
+
+  select option {
+    background-color: #ffffff;
+    color: #171412;
+  }
+
+  .dark select option {
+    background-color: #1a1715;
+    color: #f4f1ed;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--sm-font-display);
+    text-wrap: balance;
+  }
+
+  .font-mono,
+  code,
+  pre {
+    font-family: var(--sm-font-mono);
+  }
+}
+
+.sm-lens {
+  background-image: var(--sm-lens-sheen);
+  backdrop-filter: blur(12px) saturate(175%) brightness(1.02);
+  -webkit-backdrop-filter: blur(12px) saturate(175%) brightness(1.02);
+  box-shadow: var(--sm-lens-highlight), var(--sm-lens-shadow);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
